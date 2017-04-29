@@ -15,15 +15,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/i9500
+COMMON_PATH := device/samsung/exynos5410-common
 
 BOARD_VENDOR := samsung
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
-# Assert
-TARGET_OTA_ASSERT_DEVICE := ja3g,ja3gxx,i9500,GT-I9500
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5410
@@ -32,7 +29,6 @@ TARGET_NO_BOOTLOADER := true
 # Platform
 TARGET_BOARD_PLATFORM := exynos5
 TARGET_SLSI_VARIANT := cm
-TARGET_SOC := exynos5410
 
 # Architecture
 TARGET_ARCH := arm
@@ -45,7 +41,6 @@ TARGET_CPU_VARIANT := cortex-a15
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := lineageos_i9500_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos5410
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
@@ -53,12 +48,8 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-ea
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
-# Audio
-TARGET_AUDIOHAL_VARIANT := samsung
-
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BCM_BLUETOOTH_MANTA_BUG := true
@@ -101,7 +92,7 @@ CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
 
 # CMHW
 BOARD_HARDWARE_CLASS := hardware/samsung/cmhw
-BOARD_HARDWARE_CLASS += device/samsung/i9500/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/exynos5410-common/cmhw
 
 # Filesystems
 BLOCK_BASED_OTA := false
@@ -168,41 +159,31 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # IR
 IR_HAL_SUFFIX := universal5410
 
-# Linker
-LINKER_FORCED_SHIM_LIBS := /system/bin/gpsd|libdmitry.so
-
 # Media
 TARGET_OMX_LEGACY_RESCALING := true
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := universal5410
 
-# Radio
-BOARD_MODEM_TYPE := xmm6360
-BOARD_PROVIDES_LIBRIL := true
-BOARD_RIL_CLASS := ../../../device/samsung/i9500/ril
-TARGET_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
-
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 LZMA_RAMDISK_TARGETS := boot,recovery
 TARGET_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.universal5410
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.universal5410
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 ifeq ($(WITH_TWRP),true)
--include $(LOCAL_PATH)/twrp.mk
+-include $(COMMON_PATH)/twrp.mk
 endif
 
 # Seccomp filters
-BOARD_SECCOMP_POLICY := device/samsung/i9500/seccomp
+BOARD_SECCOMP_POLICY := device/samsung/exynos5410-common/seccomp
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/samsung/i9500/sepolicy_common \
-    device/samsung/i9500/sepolicy_specific
+    device/samsung/exynos5410-common/sepolicy
 
 # Sensors
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
@@ -222,4 +203,4 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 
 # inherit from the proprietary version
--include vendor/samsung/i9500/BoardConfigVendor.mk
+-include vendor/samsung/exynos5410-common/BoardConfigVendor.mk

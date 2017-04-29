@@ -17,7 +17,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),i9500)
+ifeq ($(TARGET_SOC),exynos5410)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

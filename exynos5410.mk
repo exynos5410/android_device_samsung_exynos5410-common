@@ -15,12 +15,10 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-LOCAL_PATH := device/samsung/i9500
+COMMON_PATH := device/samsung/exynos5410-common
 
 # overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -28,11 +26,9 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    fstab.universal5410 \
     init.universal5410.rc \
     init.universal5410.usb.rc \
-    init.universal5410.wifi.rc \
-    ueventd.universal5410.rc
+    init.universal5410.wifi.rc
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -52,22 +48,13 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-	$(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths_0.xml
-
-PRODUCT_PACKAGES += \
-    AudioWorkaround \
-    audio.a2dp.default \
-    audio.primary.universal5410 \
-    audio.usb.default \
-    audio.r_submix.default \
-    tinymix
+    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
-    $(LOCAL_PATH)/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
+    $(COMMON_PATH)/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
+    $(COMMON_PATH)/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
 
 # Browser
 PRODUCT_PACKAGES += \
@@ -88,13 +75,7 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
-
 PRODUCT_PACKAGES += \
-    libdmitry \
     libstlport
 
 # GPU
@@ -114,9 +95,9 @@ PRODUCT_PACKAGES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
+    $(COMMON_PATH)/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc \
+    $(COMMON_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(COMMON_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -131,9 +112,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(COMMON_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(COMMON_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -153,10 +134,10 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
 # NFCEE access control + configuration
-NFCEE_ACCESS_PATH := $(LOCAL_PATH)/nfc/nfcee_access.xml
+NFCEE_ACCESS_PATH := $(COMMON_PATH)/nfc/nfcee_access.xml
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+    $(COMMON_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -175,10 +156,7 @@ PRODUCT_PACKAGES += \
 # Radio
 PRODUCT_PACKAGES += \
     libsecril-client \
-    libsecril-client-sap \
-    modemloader \
-    libxml2 \
-    libprotobuf-cpp-full
+    libsecril-client-sap
 
 # Samsung
 PRODUCT_PACKAGES += \
@@ -193,8 +171,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -232,7 +210,7 @@ PRODUCT_COPY_FILES += \
 ifeq ($(WITH_TWRP),true)
 # TWRP
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
+    $(COMMON_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
     bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 endif
 
@@ -246,5 +224,5 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalv
 # call hwui memory config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
-# call the proprietary setup
-$(call inherit-product, vendor/samsung/i9500/i9500-vendor.mk)
+# call the common proprietary setup
+$(call inherit-product, vendor/samsung/exynos5410-common/exynos5410-common-vendor.mk)
