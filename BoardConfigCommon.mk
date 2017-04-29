@@ -20,7 +20,7 @@ COMMON_PATH := device/samsung/exynos5410-common
 BOARD_VENDOR := samsung
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5410
