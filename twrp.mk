@@ -4,15 +4,11 @@
 
 RECOVERY_VARIANT := twrp
 
+TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_RECOVERY_DEVICE_MODULES += init.recovery.usb.rc
 
 BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_SDCARD_ON_DATA := true
-
-# Add logcat support
-TWRP_INCLUDE_LOGCAT := true
-# Use toolbox instead of busybox
-TW_USE_TOOLBOX := true
 
 TW_BRIGHTNESS_PATH := /sys/class/backlight/panel/brightness
 TW_MAX_BRIGHTNESS := 255
