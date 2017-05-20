@@ -156,13 +156,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.universal5410
 
-ifneq ($(BOARD_MODEM_TYPE),xmm7260)
-# Radio
-PRODUCT_PACKAGES += \
-    libsecril-client \
-    libsecril-client-sap
-endif
-
 # Samsung
 PRODUCT_PACKAGES += \
     SamsungServiceMode
