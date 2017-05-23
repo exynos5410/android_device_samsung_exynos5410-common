@@ -65,8 +65,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.universal5410 \
-    libhwjpeg
+    camera.universal5410
 
 # Charger
 PRODUCT_PACKAGES += \

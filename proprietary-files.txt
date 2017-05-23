@@ -1,5 +1,6 @@
 # Camera
 lib/libexynoscamera.so
+lib/libhwjpeg.so
 lib/libvdis.so
 
 # Graphics
