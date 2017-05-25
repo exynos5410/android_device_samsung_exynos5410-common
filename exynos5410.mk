@@ -141,6 +141,10 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     $(COMMON_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
+# OTA
+PRODUCT_PACKAGES += \
+    OTAUpdates
+
 # OMX
 PRODUCT_PACKAGES += \
     libExynosOMX_Core \

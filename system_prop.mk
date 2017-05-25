@@ -25,6 +25,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     nfc.app_log_level=2
 
+# OTA
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ota.romname=los-14.1 \
+    ro.ota.version=$(shell date +'%Y%m%d')
+
 # OTG
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.isUsbOtgEnabled=true
