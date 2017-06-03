@@ -19,6 +19,8 @@ COMMON_PATH := device/samsung/exynos5410-common
 
 BOARD_VENDOR := samsung
 
+TARGET_UNOFFICIAL_BUILD_ID := WEEKLY
+
 # Include path
 TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
 
