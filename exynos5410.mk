@@ -61,8 +61,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.universal5410 \
-    Snap
+    camera.universal5410
 
 # Charger
 PRODUCT_PACKAGES += \
