@@ -65,7 +65,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.universal5410
+    camera.universal5410 \
+    Snap
 
 # Charger
 PRODUCT_PACKAGES += \
