@@ -17,6 +17,8 @@
 
 COMMON_PATH := device/samsung/exynos5410-common
 
+TARGET_UNOFFICIAL_BUILD_ID := WEEKLY
+
 # overlays
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
