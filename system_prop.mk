@@ -12,6 +12,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.render_dirty_regions=false \
+    debug.hwui.swap_with_damage=false \
+    ro.bq.gpu_to_cpu_unsupported=1 \
+    ro.egl.destroy_after_detach=true \
+    ro.hwui.disable_scissor_opt=true \
     ro.opengles.version=131072 \
     ro.sf.lcd_density=480 \
     ro.zygote.disable_gl_preload=1
