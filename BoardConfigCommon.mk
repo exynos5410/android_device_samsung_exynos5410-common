@@ -178,6 +178,10 @@ LZMA_RAMDISK_TARGETS := boot,recovery
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+# RIL
+TARGET_NEEDS_GCC_LIBC := true
+TARGET_NEEDS_GCC_LIBRIL := true
+
 ifeq ($(WITH_TWRP),true)
 -include $(COMMON_PATH)/twrp.mk
 endif
