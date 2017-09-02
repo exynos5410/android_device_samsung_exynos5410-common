@@ -1,0 +1,28 @@
+From e9953d8d6425550a113ff875b2764dad2057e0fa Mon Sep 17 00:00:00 2001
+From: AndDiSa <anddisa@googlemail.com>
+Date: Tue, 25 Apr 2017 08:45:27 +0200
+Subject: [PATCH] improve compatibility when compiling with clang
+
+when compiling with USE_CLANG_PLATFORM_BUILD := true compilation of hwui
+fails because the optimization parameter '-mapcs' is not known to the
+clang compiler.
+
+Change-Id: Ie99447f47156e58d095953d2b47e2991cbde49c4
+---
+
+diff --git a/libs/hwui/Android.mk b/libs/hwui/Android.mk
+index cacfce1..a38e326 100644
+--- a/libs/hwui/Android.mk
++++ b/libs/hwui/Android.mk
+@@ -149,7 +149,10 @@
+ 
+ ifdef HWUI_COMPILE_FOR_PERF
+     # TODO: Non-arm?
+-    hwui_cflags += -fno-omit-frame-pointer -marm -mapcs
++    hwui_cflags += -fno-omit-frame-pointer -marm
++ifneq (true, $(USE_CLANG_PLATFORM_BUILD))
++    hwui_cflags += -mapcs
++endif
+ endif
+ 
+ # This has to be lazy-resolved because it depends on the LOCAL_MODULE_CLASS
