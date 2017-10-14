@@ -170,6 +170,9 @@ BOARD_NFC_HAL_SUFFIX := universal5410
 # Linker
 LINKER_FORCED_SHIM_LIBS += /system/lib/libril.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|libsamsung_symbols.so
 
+# Unified PowerHAL
+TARGET_POWERHAL_VARIANT := samsung
+
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_HAS_LARGE_FILESYSTEM := true
