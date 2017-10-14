@@ -396,6 +396,10 @@ on boot
     chmod 0644 /sys/class/timed_output/vibrator/pwm_threshold
     chown system system /sys/class/timed_output/vibrator/pwm_threshold
 
+    write /proc/sys/kernel/randomize_va_space 0
+    write /sys/class/devfreq/exynos5-busfreq-mif/polling_interval 50
+    write /sys/class/devfreq/exynos5-busfreq-mif/time_in_state/upthreshold 70
+
 # Enable pulsing led on boot
     write /sys/class/sec/led/led_pattern 6
 
@@ -403,34 +407,7 @@ on boot
     write /sys/class/mdnie/mdnie/scenario 0
     write /sys/class/mdnie/mdnie/mode 0
 
-# Reduce Power Usage while booting
-    write /sys/class/backlight/panel/brightness 10
-
-    write /proc/sys/kernel/randomize_va_space 0
-    write /sys/class/devfreq/exynos5-busfreq-mif/polling_interval 50
-    write /sys/class/devfreq/exynos5-busfreq-mif/time_in_state/upthreshold 70
-
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock 177
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock 266
-
-    write /sys/class/devfreq/exynos5-busfreq-mif/min_freq 100000
-    write /sys/class/devfreq/exynos5-busfreq-mif/max_freq 800000
-
 on charger
-# Set CPU governor to powersave
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
-
-# Limit mix/max CPU/GPU/BUS frequencies
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 250000
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/min_freq 250000
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_freq 250000
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock 266
-    write /sys/class/devfreq/exynos5-busfreq-mif/max_freq 800000
-
-# Do not enable boost mode
-    write /sys/class/thermal/thermal_zone0/boost_mode 0
-
 # EHCI runtime enable for LPA
     write /sys/devices/platform/s5p-ehci/power/control auto
 
@@ -484,43 +461,7 @@ service battery_charger /sbin/healthd -c
     critical
     seclabel u:r:healthd:s0
 
-# CyanogenMod Performance Profiles
-# Powersave
-on property:sys.perf.profile=0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/min_freq 250000
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_freq 500000
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock 177
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock 266
-    write /sys/class/devfreq/exynos5-busfreq-mif/min_freq 100000
-    write /sys/class/devfreq/exynos5-busfreq-mif/max_freq 800000
-    write /sys/class/thermal/thermal_zone0/boost_mode 0
-
-# Balanced
-on property:sys.perf.profile=1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/min_freq 250000
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_freq 1600000
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock 177
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock 532
-    write /sys/class/devfreq/exynos5-busfreq-mif/min_freq 100000
-    write /sys/class/devfreq/exynos5-busfreq-mif/max_freq 800000
-    write /sys/class/thermal/thermal_zone0/boost_mode 0
-
-# Performance
-on property:sys.perf.profile=2
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/min_freq 800000
-    write /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_freq 1600000
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock 480
-    write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock 532
-    write /sys/class/devfreq/exynos5-busfreq-mif/min_freq 800000
-    write /sys/class/devfreq/exynos5-busfreq-mif/max_freq 800000
-    write /sys/class/thermal/thermal_zone0/boost_mode 1
-
 on property:sys.boot_completed=1
-# Switch to balanced mode after boot for better UX
-    setprop sys.perf.profile 1
 # Disable pulsing led on boot complete
     write /sys/class/sec/led/led_pattern 0
 # Set preferred IO scheduler after boot
