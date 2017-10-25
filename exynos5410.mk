@@ -56,6 +56,12 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(COMMON_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    tinymix
+
 # Bluetooth
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
