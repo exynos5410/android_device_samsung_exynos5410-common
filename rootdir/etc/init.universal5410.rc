@@ -407,6 +407,9 @@ on boot
     write /sys/class/mdnie/mdnie/scenario 0
     write /sys/class/mdnie/mdnie/mode 0
 
+# Decrease screen brightness while booting
+    write /sys/class/backlight/panel/brightness 10
+
 on charger
 # EHCI runtime enable for LPA
     write /sys/devices/platform/s5p-ehci/power/control auto
