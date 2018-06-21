@@ -71,6 +71,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     camera.universal5410
 
+# Samsung Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
