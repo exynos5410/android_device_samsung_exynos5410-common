@@ -75,6 +75,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
+# Samsung Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
