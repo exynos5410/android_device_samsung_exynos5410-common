@@ -219,5 +219,9 @@ BOARD_USES_SCALER := true
 # Samsung Gralloc
 TARGET_SAMSUNG_GRALLOC_EXTERNAL_USECASES := true
 
+# Battery / charging mode
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_BATTERY_DEVICE_NAME := battery
+
 # inherit from the proprietary version
 -include vendor/samsung/exynos5410-common/BoardConfigVendor.mk
