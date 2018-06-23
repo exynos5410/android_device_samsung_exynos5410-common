@@ -226,5 +226,8 @@ IR_HAL_SUFFIX := universal5410
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_BATTERY_DEVICE_NAME := battery
 
+# ODEX
+WITH_DEXPREOPT := true
+
 # inherit from the proprietary version
 -include vendor/samsung/exynos5410-common/BoardConfigVendor.mk
