@@ -112,6 +112,7 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+        <item>4</item>
         <item>9</item>
         <item>30</item>
         <item>100</item>
@@ -127,6 +128,7 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>5</item>    <!-- 0-9 -->
         <item>18</item>   <!-- 0-9 -->
         <item>30</item>   <!-- 10-30 -->
         <item>59</item>   <!-- 31-100 -->
@@ -235,4 +237,12 @@
     <!-- Enable button brightness -->
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
+    <!-- Minimum screen brightness allowed by the power manager. -->
+    <integer name="config_screenBrightnessDim">1</integer>
+    
+    <!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level.
+-->
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
+   
 </resources>
