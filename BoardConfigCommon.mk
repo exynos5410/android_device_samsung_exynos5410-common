@@ -216,5 +216,8 @@ WIFI_BAND                        := 802_11_ABG
 # Scaler
 BOARD_USES_SCALER := true
 
+# Samsung Gralloc
+TARGET_SAMSUNG_GRALLOC_EXTERNAL_USECASES := true
+
 # inherit from the proprietary version
 -include vendor/samsung/exynos5410-common/BoardConfigVendor.mk
