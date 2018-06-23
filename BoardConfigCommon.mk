@@ -229,5 +229,8 @@ BOARD_BATTERY_DEVICE_NAME := battery
 # ODEX
 WITH_DEXPREOPT := true
 
+# Advanced Low Power audio support
+BOARD_USE_ALP_AUDIO := true 
+
 # inherit from the proprietary version
 -include vendor/samsung/exynos5410-common/BoardConfigVendor.mk
