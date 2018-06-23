@@ -219,5 +219,8 @@ BOARD_USES_SCALER := true
 # Samsung Gralloc
 TARGET_SAMSUNG_GRALLOC_EXTERNAL_USECASES := true
 
+# ConsumerIR from hardware/samsung
+IR_HAL_SUFFIX := universal5410
+
 # inherit from the proprietary version
 -include vendor/samsung/exynos5410-common/BoardConfigVendor.mk
