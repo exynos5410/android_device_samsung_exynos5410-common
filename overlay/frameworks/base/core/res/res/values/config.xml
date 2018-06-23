@@ -209,7 +209,7 @@
     <bool name="config_supportSpeakerNearUltrasound">false</bool>
 
     <!-- Screen brightness when dozing. -->
-    <integer name="config_screenBrightnessDoze">17</integer>
+    <integer name="config_screenBrightnessDoze">5</integer>
 
 
     <!-- Dream of notifications -->
