@@ -213,5 +213,21 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 
+# Scaler
+BOARD_USES_SCALER := true
+
+# Samsung Gralloc
+TARGET_SAMSUNG_GRALLOC_EXTERNAL_USECASES := true
+
+# Battery / charging mode
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_BATTERY_DEVICE_NAME := battery
+
+# ODEX
+WITH_DEXPREOPT := true
+
+# Advanced Low Power audio support
+BOARD_USE_ALP_AUDIO := true 
+
 # inherit from the proprietary version
 -include vendor/samsung/exynos5410-common/BoardConfigVendor.mk
